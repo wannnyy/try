@@ -25,9 +25,6 @@ public class GameScreen {
 		gameScene = new Scene(rootPane, 800, 640);
 		golfCourse.requestFocus();
 		gameLogic = new GameLogic(main);
-	}
-
-	public void start() {
 		animation = new AnimationTimer() {
 			public void handle(long now) {
 				gameLogic.logicUpdate();
@@ -36,6 +33,9 @@ public class GameScreen {
 				InputUtility.updateInputState();
 			}
 		};
+	}
+
+	public void start() {
 		animation.start();
 		stage.setScene(gameScene);
 	}
