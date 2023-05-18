@@ -3,38 +3,45 @@ package pane;
 import input.InputUtility;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logic.GameLogic;
 import main.Main;
 import sharedObject.RenderableHolder;
 
 public class GameScreen {
-	private int shotCounter;
 	private GameLogic gameLogic;
 	private GolfCourse golfCourse;
-	private RootPane rootPane;
+	private TopGamePane topGamePane;
 	private Scene gameScene;
 	private Stage stage;
 	private Main main;
 	private AnimationTimer animation;
 
 	public GameScreen(Main main, Stage stage) {
-		shotCounter = 0 ;
 		this.main = main;
 		this.stage = stage;
 		golfCourse = new GolfCourse();
-		rootPane = new RootPane(golfCourse, main);
-		gameScene = new Scene(rootPane, 800, 640);
-		golfCourse.requestFocus();
 		gameLogic = new GameLogic(main);
+		gameScene = new Scene(createPane(golfCourse, main), 800, 640);
 		animation = new AnimationTimer() {
 			public void handle(long now) {
 				gameLogic.logicUpdate();
 				golfCourse.paintComponent();
 				RenderableHolder.getInstance().update();
 				InputUtility.updateInputState();
+				topGamePane.setShotParameter(gameLogic.getShotCounter() + "");
 			}
 		};
+	}
+
+	public VBox createPane(GolfCourse golfCourse, Main main) {
+		VBox gamePane = new VBox();
+		topGamePane = new TopGamePane(main);
+		topGamePane.setMaxShot(gameLogic.getMaxShot());
+		topGamePane.setShotParameter("0");
+		gamePane.getChildren().addAll(topGamePane, golfCourse);
+		return gamePane;
 	}
 
 	public void start() {
@@ -42,20 +49,11 @@ public class GameScreen {
 		stage.setScene(gameScene);
 	}
 
-	public int getShotCounter() {
-		return shotCounter;
-	}
-
-	public void setShotCounter(int shotCounter) {
-		this.shotCounter = shotCounter;
-	}
-
 	public void reset() {
 		animation.stop();
 		RenderableHolder.getInstance().getEntities().clear();
 		gameLogic = new GameLogic(main);
 		golfCourse = new GolfCourse();
-		rootPane = new RootPane(golfCourse, main);
-		gameScene = new Scene(rootPane, 800, 640);
+		gameScene = new Scene(createPane(golfCourse, main), 800, 640);
 	}
 }

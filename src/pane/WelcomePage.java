@@ -1,26 +1,17 @@
 package pane;
 
-import input.InputUtility;
-import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import logic.GameLogic;
 import main.Main;
-import sharedObject.RenderableHolder;
 
 public class WelcomePage extends VBox {
 	private Button startButton;
 	private Button exitButton;
-	private RootPane rootPane;
 	private DropDown dropDown;
 	private Main myMain;
 
@@ -61,9 +52,5 @@ public class WelcomePage extends VBox {
 
 	public Button getExitButton() {
 		return exitButton;
-	}
-
-	public RootPane getRootPane() {
-		return rootPane;
 	}
 }

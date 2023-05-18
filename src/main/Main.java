@@ -22,7 +22,6 @@ public class Main extends Application {
 		WelcomePage welcomePage = new WelcomePage(stage, this);
 		welcomePageScene = new Scene(welcomePage, 800, 640);
 		gameScreen = new GameScreen(this, stage);
-
 		stage.setScene(welcomePageScene);
 		stage.setTitle("MiniGolf");
 		stage.setResizable(false);
