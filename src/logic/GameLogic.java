@@ -152,6 +152,7 @@ public class GameLogic {
 		this.main.getGameScreen().reset();
 		GameEndScreen endingScreen = new GameEndScreen(main, isWin);
 		Scene endingScene = new Scene(endingScreen, 800, 600);
+		endingScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 		main.getStage().setScene(endingScene);
 	}
 

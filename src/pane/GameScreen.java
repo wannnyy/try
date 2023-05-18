@@ -24,6 +24,8 @@ public class GameScreen {
 		golfCourse = new GolfCourse();
 		gameLogic = new GameLogic(main);
 		gameScene = new Scene(createPane(golfCourse, main), 800, 640);
+		gameScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
 		animation = new AnimationTimer() {
 			public void handle(long now) {
 				gameLogic.logicUpdate();
@@ -55,5 +57,6 @@ public class GameScreen {
 		gameLogic = new GameLogic(main);
 		golfCourse = new GolfCourse();
 		gameScene = new Scene(createPane(golfCourse, main), 800, 640);
+		gameScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 	}
 }

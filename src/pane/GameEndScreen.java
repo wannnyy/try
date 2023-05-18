@@ -3,6 +3,8 @@ package pane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -11,14 +13,15 @@ import main.Main;
 public class GameEndScreen extends VBox {
 	private Main main;
 	private HBox buttonSection;
-	private Text titleLabel;
+	private Label titleLabel;
 	private boolean isWin;
 
 	public GameEndScreen(Main main, boolean isWin) {
 		this.isWin = isWin;
 		this.main = main;
-		titleLabel = new Text("Adsawdawdawdw");
-		titleLabel.setStyle("-fx-font-size: 36px;");
+		this.getStyleClass().add("ending");
+		titleLabel = new Label();
+		titleLabel.getStyleClass().add("text-title");
 		createButtonSection();
 		setSpacing(20);
 		setPadding(new Insets(40));
@@ -33,14 +36,21 @@ public class GameEndScreen extends VBox {
 			main.getGameScreen().reset();
 			main.getGameScreen().start();
 		});
+		reset.getStyleClass().add("ending-reset");
+
+
 		Button home = new Button();
 		home.setText("Home");
 		home.setOnAction(event -> {
 			main.getStage().setScene(main.getWelcomePageScene());
 		});
+		home.getStyleClass().add("ending-home");
+
+		
 		buttonSection.setSpacing(40);
 		buttonSection.getChildren().addAll(reset, home);
 		buttonSection.setAlignment(Pos.CENTER);
+
 		chosingScene();
 	}
 

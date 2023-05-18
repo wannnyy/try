@@ -21,6 +21,7 @@ public class Main extends Application {
 		this.stage = stage;
 		WelcomePage welcomePage = new WelcomePage(stage, this);
 		welcomePageScene = new Scene(welcomePage, 800, 640);
+		welcomePageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 		gameScreen = new GameScreen(this, stage);
 		stage.setScene(welcomePageScene);
 		stage.setTitle("MiniGolf");

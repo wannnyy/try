@@ -16,11 +16,13 @@ public class RenderableHolder {
 	public static Image mapSprite;
 	public static Image mineSprite;
 	public static Image treeSprite;
+	public static Image backgroundImage;
 	public static Image golfBall;
+	public static Image rockSprite;
 	public static AudioClip hitSound;
+	public static AudioClip clickSound;
 	public static AudioClip treeHit;
 	public static AudioClip rockHit;
-	public static Image rockSprite;
 	public static AudioClip puttSound ;
 
 	static {
@@ -53,6 +55,8 @@ public class RenderableHolder {
 		treeHit = new AudioClip(ClassLoader.getSystemResource("treehit.mp3").toString());
 		puttSound = new AudioClip(ClassLoader.getSystemResource("puttsound.mp3").toString());
 		rockHit = new AudioClip(ClassLoader.getSystemResource("rockhit.mp4").toString());
+		backgroundImage = new Image(ClassLoader.getSystemResource("bgi2.jpg").toString());
+		clickSound = new AudioClip(ClassLoader.getSystemResource("clicksound.mp3").toString());
 	}
 
 	public void add(IRenderable entity) {

@@ -8,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import main.Main;
+import sharedObject.RenderableHolder;
 
 public class TopGamePane extends BorderPane {
 	private Main main;
@@ -23,7 +24,11 @@ public class TopGamePane extends BorderPane {
 
 		BackButton btn1 = new BackButton(main);
 		shotParameter = new Text();
+		shotParameter.getStyleClass().add("text-shot");
+
 		Button reset = createResetButton();
+		reset.getStyleClass().add("button-reset");
+
 
 		this.setShotParameter("0");
 		this.setCenter(reset);
@@ -35,6 +40,7 @@ public class TopGamePane extends BorderPane {
 		Button reset = new Button();
 		reset.setText("reset");
 		reset.setOnAction(event -> {
+			RenderableHolder.clickSound.play();
 			main.getGameScreen().reset();
 			main.getGameScreen().start();
 		});
