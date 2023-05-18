@@ -179,10 +179,12 @@ public class GolfBall extends CollidableEntity {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.BLUE);
-		gc.fillArc(x - radius, y - radius, radius * 2, radius * 2, 0, 360, ArcType.OPEN);
-		gc.translate(x, y);
-		gc.translate(-x, -y);
+//		gc.setFill(Color.BLUE);
+//		gc.fillArc(x - radius, y - radius, radius * 2, radius * 2, 0, 360, ArcType.OPEN);
+//		gc.translate(x, y);
+//		gc.translate(-x, -y);
+		
+		gc.drawImage(RenderableHolder.golfBall, x-radius, y-radius);
 
 		if (speed == 0 && InputUtility.isDrag) {
 			drawArrow(gc);

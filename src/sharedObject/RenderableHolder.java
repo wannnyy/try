@@ -15,7 +15,9 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	public static Image mapSprite;
-	public static Image mineSprite,treeSprite;
+	public static Image mineSprite;
+	public static Image treeSprite;
+	public static Image golfBall; 
 	public static AudioClip  hitSound;
 	public static AudioClip treeHit ;
 	public static AudioClip rockHit ;
@@ -49,6 +51,8 @@ public class RenderableHolder {
 		treeHit = new AudioClip(ClassLoader.getSystemResource("treehit.mp3").toString());
 		rockHit = new AudioClip(ClassLoader.getSystemResource("rockhit.mp4").toString());
 		rockSprite =  new Image(ClassLoader.getSystemResource("rock.png").toString());
+		golfBall =  new Image(ClassLoader.getSystemResource("golfBall.png").toString());
+
 	}
 
 	public void add(IRenderable entity) {
