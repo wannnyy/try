@@ -140,6 +140,7 @@ public class GameLogic {
 		}
 		if (hole.isBallInHole(golfBall) && golfBall.getSpeed() == 0) {
 			showEndingScene();
+			RenderableHolder.puttSound.play();
 		}
 		if (!isWin) {
 			showEndingScene();
