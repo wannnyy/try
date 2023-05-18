@@ -18,5 +18,5 @@ public class BackButton extends StackPane {
 		});
 		this.getChildren().addAll(c1, t1);
 	}
-	
+
 }

@@ -27,6 +27,7 @@ public class Map {
 		objectContainer.add(rock);
 		return (ArrayList<Entity>) objectContainer;
 	}
+
 	public ArrayList<Entity> buildMap2() {
 		Tree tree, tree1;
 		Hole hole;

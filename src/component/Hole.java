@@ -7,46 +7,49 @@ import logic.CollidableEntity;
 
 public class Hole extends Obstacle {
 
-    private Circle circle;
-    private double radius = 20;
+	private Circle circle;
+	private double radius = 20;
 
-    public Hole(double centerX, double centerY) {
-        circle = new Circle(centerX, centerY, radius, Color.BLACK);
-    }
+	public Hole(double centerX, double centerY) {
+		circle = new Circle(centerX, centerY, radius, Color.BLACK);
+	}
 
-    public Circle getCircle() {
-        return circle;
-    }
+	public Circle getCircle() {
+		return circle;
+	}
 
-    public double getRadius() {
-        return radius;
-    }
+	public double getRadius() {
+		return radius;
+	}
 
-    // Additional methods...
+	// Additional methods...
 
-    public void setPosition(double centerX, double centerY) {
-        circle.setCenterX(centerX);
-        circle.setCenterY(centerY);
-    }
+	public void setPosition(double centerX, double centerY) {
+		circle.setCenterX(centerX);
+		circle.setCenterY(centerY);
+	}
 
-    public boolean isBallInHole(GolfBall ball) {
-        double ballCenterX = ball.getX();
-        double ballCenterY = ball.getY();
-        double ballRadius = 10;
-        double distance = Math.sqrt(Math.pow(ballCenterX - circle.getCenterX(), 2) + Math.pow(ballCenterY - circle.getCenterY(), 2));
-        return distance <= (radius - ballRadius);
-    }
+	public boolean isBallInHole(GolfBall ball) {
+		double ballCenterX = ball.getX();
+		double ballCenterY = ball.getY();
+		double ballRadius = 10;
+		double distance = Math
+				.sqrt(Math.pow(ballCenterX - circle.getCenterX(), 2) + Math.pow(ballCenterY - circle.getCenterY(), 2));
+		return distance <= (radius - ballRadius);
+	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.setFill(Color.BLACK);
-        gc.fillOval(this.circle.getCenterX() - this.circle.getRadius(), this.circle.getCenterY() - this.circle.getRadius(), this.circle.getRadius() * 2, this.circle.getRadius() * 2);
+		gc.fillOval(this.circle.getCenterX() - this.circle.getRadius(),
+				this.circle.getCenterY() - this.circle.getRadius(), this.circle.getRadius() * 2,
+				this.circle.getRadius() * 2);
 	}
 
 	@Override
 	public void onCollision(GolfBall golfBall) {
 		// TODO Auto-generated method stub
-		golfBall.setSpeed(golfBall.getSpeed()*0.3);
+		golfBall.setSpeed(golfBall.getSpeed() * 0.3);
 	}
 }

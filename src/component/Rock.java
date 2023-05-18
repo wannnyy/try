@@ -14,7 +14,7 @@ public class Rock extends Obstacle {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.rockSprite, x-radius, y-radius);
+		gc.drawImage(RenderableHolder.rockSprite, x - radius, y - radius);
 
 	}
 

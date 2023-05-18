@@ -8,7 +8,6 @@ import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 
-
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 
@@ -17,10 +16,10 @@ public class RenderableHolder {
 	public static Image mapSprite;
 	public static Image mineSprite;
 	public static Image treeSprite;
-	public static Image golfBall; 
-	public static AudioClip  hitSound;
-	public static AudioClip treeHit ;
-	public static AudioClip rockHit ;
+	public static Image golfBall;
+	public static AudioClip hitSound;
+	public static AudioClip treeHit;
+	public static AudioClip rockHit;
 	public static Image rockSprite;
 
 	static {
@@ -50,8 +49,8 @@ public class RenderableHolder {
 		hitSound = new AudioClip(ClassLoader.getSystemResource("hitsound.mp3").toString());
 		treeHit = new AudioClip(ClassLoader.getSystemResource("treehit.mp3").toString());
 		rockHit = new AudioClip(ClassLoader.getSystemResource("rockhit.mp4").toString());
-		rockSprite =  new Image(ClassLoader.getSystemResource("rock.png").toString());
-		golfBall =  new Image(ClassLoader.getSystemResource("golfBall.png").toString());
+		rockSprite = new Image(ClassLoader.getSystemResource("rock.png").toString());
+		golfBall = new Image(ClassLoader.getSystemResource("golfBall.png").toString());
 
 	}
 

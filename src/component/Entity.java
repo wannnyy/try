@@ -2,29 +2,29 @@ package component;
 
 import sharedObject.IRenderable;
 
-public abstract class Entity implements IRenderable{
+public abstract class Entity implements IRenderable {
 
-	protected double x,y;
+	protected double x, y;
 	protected int z;
-	protected boolean visible,destroyed;
-	
-	protected Entity(){
+	protected boolean visible, destroyed;
+
+	protected Entity() {
 		visible = true;
 		destroyed = false;
 	}
-	
+
 	@Override
-	public boolean isDestroyed(){
+	public boolean isDestroyed() {
 		return destroyed;
 	}
-	
+
 	@Override
-	public boolean isVisible(){
+	public boolean isVisible() {
 		return visible;
 	}
-	
+
 	@Override
-	public int getZ(){
+	public int getZ() {
 		return z;
 	}
 }

@@ -6,7 +6,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.HBox;
 import main.Main;
 
-public class DropDown extends HBox{
+public class DropDown extends HBox {
 	public DropDown(Main main) {
 		ChoiceBox<String> choiceBox = new ChoiceBox<>();
 		choiceBox.getItems().addAll("Option 1", "Option 2", "Option 3");
@@ -28,11 +28,11 @@ public class DropDown extends HBox{
 			}
 		});
 
-		this.getChildren().addAll(choiceBox,dropDownButton);
+		this.getChildren().addAll(choiceBox, dropDownButton);
 		this.setSpacing(10);
 		this.setAlignment(Pos.CENTER);
 	}
-	
+
 	public HBox getDropDown() {
 		return this;
 	}

@@ -34,14 +34,15 @@ public class GameLogic {
 	private final Map map = new Map();
 
 	public GameLogic(Main main) {
+		Field field = new Field();
 		this.main = main;
 		isWin = true;
-		this.maxShot = 8;
-		Field field = new Field();
 		shotCounter = 0;
 		RenderableHolder.getInstance().add(field);
+		
 		this.gameObjectContainer = new ArrayList<Entity>();
 		this.obstacle = new ArrayList<Obstacle>();
+		
 		selectMap(main.getSelectedMap());
 	}
 

@@ -8,13 +8,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import main.Main;
 
-public class GameEndScreen extends VBox{
+public class GameEndScreen extends VBox {
 	private Main main;
 	private HBox buttonSection;
-	private Text titleLabel ; 
-	private boolean isWin ; 
+	private Text titleLabel;
+	private boolean isWin;
 
-	public GameEndScreen(Main main,boolean isWin) {
+	public GameEndScreen(Main main, boolean isWin) {
 		this.isWin = isWin;
 		this.main = main;
 		titleLabel = new Text("Adsawdawdawdw");
@@ -39,24 +39,25 @@ public class GameEndScreen extends VBox{
 			main.getStage().setScene(main.getWelcomePageScene());
 		});
 		buttonSection.setSpacing(40);
-		buttonSection.getChildren().addAll(reset,home);
+		buttonSection.getChildren().addAll(reset, home);
 		buttonSection.setAlignment(Pos.CENTER);
 		chosingScene();
 	}
-	
+
 	public void losingScene() {
 		titleLabel.setText("YOU LOSE!");
-		this.getChildren().addAll(titleLabel,buttonSection);
+		this.getChildren().addAll(titleLabel, buttonSection);
 	}
+
 	public void winningScene() {
 		titleLabel.setText("YOU WIN!");
-		this.getChildren().addAll(titleLabel,buttonSection);
+		this.getChildren().addAll(titleLabel, buttonSection);
 	}
+
 	public void chosingScene() {
-		if(isWin) {
+		if (isWin) {
 			winningScene();
-		}
-		else {
+		} else {
 			losingScene();
 		}
 	}
