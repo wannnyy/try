@@ -138,15 +138,15 @@ public class GameLogic {
 			}
 		}
 		if (hole.isBallInHole(golfBall) && golfBall.getSpeed() == 0) {
-			endingScene();
+			showEndingScene();
 		}
 		if (!isWin) {
-			endingScene();
+			showEndingScene();
 		}
 
 	}
 
-	public void endingScene() {
+	public void showEndingScene() {
 		this.main.getGameScreen().reset();
 		GameEndScreen endingScreen = new GameEndScreen(main, isWin);
 		Scene endingScene = new Scene(endingScreen, 800, 600);

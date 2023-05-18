@@ -9,14 +9,14 @@ import logic.GameLogic;
 import sharedObject.RenderableHolder;
 
 public class GolfBall extends CollidableEntity {
-	private GameLogic gameLogic;  
+	private GameLogic gameLogic;
 	public final double maxSpeed = 10;
 	private int powerPercent;
 	private int shotCount;
 	private double speed, angle;
 	private final double speedDecayRate = 0.25;
 
-	public GolfBall(double x, double y , GameLogic gameLogic) {
+	public GolfBall(double x, double y, GameLogic gameLogic) {
 		this.gameLogic = gameLogic;
 		this.setPowerPercent(0);
 		this.setSpeed(0);
@@ -151,6 +151,31 @@ public class GolfBall extends CollidableEntity {
 //		setSpeed(maxSpeed);
 	}
 
+	public void drawArrow(GraphicsContext gc) {
+		double dx = x - InputUtility.mousePosX;
+		double dy = y - InputUtility.mousePosY;
+		double distance = Math.sqrt(dx * dx + dy * dy); // Calculate the distance between the two points
+		double arrowLength = Math.min(distance, 200); // Set arrowLength to the distance, but no more than 20.0
+		double arrowWidth = 20;
+		// Calculate the angle between the line and the x-axis
+		double angle = Math.atan2(dy, dx);
+
+		// Calculate the coordinates of the arrowhead
+		double arrowEndX = x + arrowLength * Math.cos(angle);
+		double arrowEndY = y + arrowLength * Math.sin(angle);
+		double arrowTip1X = arrowEndX + arrowWidth * Math.cos(angle + Math.toRadians(135));
+		double arrowTip1Y = arrowEndY + arrowWidth * Math.sin(angle + Math.toRadians(135));
+		double arrowTip2X = arrowEndX + arrowWidth * Math.cos(angle - Math.toRadians(135));
+		double arrowTip2Y = arrowEndY + arrowWidth * Math.sin(angle - Math.toRadians(135));
+
+		// Draw the line with an arrowhead at the end
+		gc.setStroke(Color.RED);
+		gc.setLineWidth(4.0);
+		gc.strokeLine(x, y, arrowEndX, arrowEndY);
+		gc.strokeLine(arrowEndX, arrowEndY, arrowTip1X, arrowTip1Y);
+		gc.strokeLine(arrowEndX, arrowEndY, arrowTip2X, arrowTip2Y);
+	}
+
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
@@ -160,28 +185,7 @@ public class GolfBall extends CollidableEntity {
 		gc.translate(-x, -y);
 
 		if (speed == 0 && InputUtility.isDrag) {
-			double dx = x - InputUtility.mousePosX;
-			double dy = y - InputUtility.mousePosY;
-			double distance = Math.sqrt(dx * dx + dy * dy); // Calculate the distance between the two points
-			double arrowLength = Math.min(distance, 200); // Set arrowLength to the distance, but no more than 20.0
-			double arrowWidth = 20;
-			// Calculate the angle between the line and the x-axis
-			double angle = Math.atan2(dy, dx);
-
-			// Calculate the coordinates of the arrowhead
-			double arrowEndX = x + arrowLength * Math.cos(angle);
-			double arrowEndY = y + arrowLength * Math.sin(angle);
-			double arrowTip1X = arrowEndX + arrowWidth * Math.cos(angle + Math.toRadians(135));
-			double arrowTip1Y = arrowEndY + arrowWidth * Math.sin(angle + Math.toRadians(135));
-			double arrowTip2X = arrowEndX + arrowWidth * Math.cos(angle - Math.toRadians(135));
-			double arrowTip2Y = arrowEndY + arrowWidth * Math.sin(angle - Math.toRadians(135));
-
-			// Draw the line with an arrowhead at the end
-			gc.setStroke(Color.RED);
-			gc.setLineWidth(4.0);
-			gc.strokeLine(x, y, arrowEndX, arrowEndY);
-			gc.strokeLine(arrowEndX, arrowEndY, arrowTip1X, arrowTip1Y);
-			gc.strokeLine(arrowEndX, arrowEndY, arrowTip2X, arrowTip2Y);
+			drawArrow(gc);
 		}
 
 	}
