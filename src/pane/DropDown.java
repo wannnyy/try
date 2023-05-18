@@ -9,9 +9,9 @@ import main.Main;
 public class DropDown extends HBox {
 	public DropDown(Main main) {
 		ChoiceBox<String> choiceBox = new ChoiceBox<>();
-		choiceBox.getItems().addAll("Option 1", "Option 2", "Option 3");
-		choiceBox.setValue("Option 1");
-		main.setSelectedMap("Option 1");
+		choiceBox.getItems().addAll("Map 1", "Map 2", "Map 3");
+		choiceBox.setValue("Map 1");
+		main.setSelectedMap("Map 1");
 
 		// Create a Button
 		Button dropDownButton = new Button("Select");

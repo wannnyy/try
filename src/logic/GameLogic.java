@@ -55,7 +55,7 @@ public class GameLogic {
 	}
 
 	public void selectMap(String selectedMap) {
-		if (selectedMap.equals("Option 1")) {
+		if (selectedMap.equals("Map 1")) {
 			ArrayList<Entity> map1 = map.buildMap1();
 			golfBall = new GolfBall(600, 400, this);
 			hole = new Hole(100, 200);
@@ -66,7 +66,7 @@ public class GameLogic {
 				addNewObject(e);
 			}
 
-		} else if (selectedMap.equals("Option 2")) {
+		} else if (selectedMap.equals("Map 2")) {
 			golfBall = new GolfBall(600, 400, this);
 			tree = new Tree(200, 400);
 			tree1 = new Tree(400, 400);
