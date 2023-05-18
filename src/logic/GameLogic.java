@@ -12,7 +12,10 @@ import component.Obstacle;
 import component.Rock;
 import component.Tree;
 import component.Wall;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import main.Main;
+import pane.GameEndScreen;
 import sharedObject.RenderableHolder;
 
 public class GameLogic {
@@ -20,16 +23,19 @@ public class GameLogic {
 	private List<Entity> gameObjectContainer;
 	private int shotCounter;
 	private int maxShot;
-
+	private boolean isWin ; 
 	private List<Obstacle> obstacle;
 	private GolfBall golfBall;
 	private Tree tree, tree1;
 	private Hole hole;
 	private Rock rock;
+	private Main main ; 
 	private Wall wall1;
 	private final Map map = new Map();
 
 	public GameLogic(Main main) {
+		this.main = main ; 
+		isWin = true ;
 		this.maxShot = 8;
 		Field field = new Field();
 		shotCounter = 0;
@@ -37,6 +43,15 @@ public class GameLogic {
 		this.gameObjectContainer = new ArrayList<Entity>();
 		this.obstacle = new ArrayList<Obstacle>();
 		selectMap(main.getSelectedMap());
+	}
+	
+	public void checkWinning() {
+		if(shotCounter > maxShot) {
+			isWin = false ;
+		}
+		else {
+			isWin = true ;
+		}
 	}
 
 	public void selectMap(String selectedMap) {
@@ -116,6 +131,7 @@ public class GameLogic {
 	public void logicUpdate() {
 		shotCounter = golfBall.getShotCount();
 		golfBall.update();
+		checkWinning();
 		for (Obstacle e : obstacle) {
 			if (golfBall.collideWith(e) && !e.isDestroyed()) {
 				System.out.println("hit");
@@ -125,6 +141,13 @@ public class GameLogic {
 		if (hole.isBallInHole(golfBall) && golfBall.getSpeed() == 0) {
 			System.out.println("GameEnded");
 		}
+		if(!isWin) {
+			this.main.getGameScreen().reset();
+			GameEndScreen endingScreen = new GameEndScreen(main,isWin);
+			Scene endingScene = new Scene(endingScreen,800,600);
+			main.getStage().setScene(endingScene);
+		}
+		
 	}
 
 	public int getShotCounter() {
