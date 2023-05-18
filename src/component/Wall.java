@@ -38,10 +38,12 @@ public class Wall extends Obstacle{
         // Adjust the ball's velocity based on collision
         if (ballX - ballRadius <= x || ballX + ballRadius >= x + width) {
             golfball.reverseXVelocity();
+//            System.out.println("x");
         }
 
         if (ballY - ballRadius <= y || ballY + ballRadius >= y + height) {
             golfball.reverseYVelocity();
+//            System.out.println("y");
         }
 	}
 

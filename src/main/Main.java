@@ -27,7 +27,6 @@ public class Main extends Application {
 		stage.setTitle("MiniGolf");
 		stage.setResizable(false);
 		stage.show();
-
 	}
 
 	public GameScreen getGameScreen() {

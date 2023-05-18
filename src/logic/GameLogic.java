@@ -7,6 +7,7 @@ import component.Entity;
 import component.Field;
 import component.GolfBall;
 import component.Hole;
+import component.Map;
 import component.Obstacle;
 import component.Rock;
 import component.Tree;
@@ -23,6 +24,7 @@ public class GameLogic {
 	private Hole hole;
 	private Rock rock;
 	private Wall wall1;
+	private final Map map = new Map();
 
 	public GameLogic(Main main) {
 		Field field = new Field();
@@ -34,18 +36,22 @@ public class GameLogic {
 
 	public void selectMap(String selectedMap) {
 		if (selectedMap.equals("Option 1")) {
+			ArrayList<Entity> map1 = map.buildMap1();
 			golfBall = new GolfBall(600, 400);
-			tree = new Tree(200, 400);
-			tree1 = new Tree(400, 400);
 			hole = new Hole(100, 200);
-			wall1 = new Wall(350, 250, 20, 70);
-			rock = new Rock(300, 300);
+//			tree = new Tree(200, 400);
+//			tree1 = new Tree(400, 400);
+//			wall1 = new Wall(350, 250, 20, 70);
+//			rock = new Rock(300, 300);
 			addNewObject(golfBall);
-			addNewObject(rock);
-			addNewObject(tree);
-			addNewObject(tree1);
 			addNewObject(hole);
-			addNewObject(wall1);
+//			addNewObject(rock);
+//			addNewObject(tree);
+//			addNewObject(tree1);
+//			addNewObject(wall1);
+			for(Entity e : map1) {
+				addNewObject(e);
+			}
 
 		}else if(selectedMap.equals("Option 2")) {
 			golfBall = new GolfBall(600, 400);

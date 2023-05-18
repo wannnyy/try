@@ -33,9 +33,7 @@ public class Hole extends Obstacle {
         double ballCenterX = ball.getX();
         double ballCenterY = ball.getY();
         double ballRadius = 10;
-
         double distance = Math.sqrt(Math.pow(ballCenterX - circle.getCenterX(), 2) + Math.pow(ballCenterY - circle.getCenterY(), 2));
-        
         return distance <= (radius - ballRadius);
     }
 

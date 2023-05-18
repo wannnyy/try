@@ -8,7 +8,7 @@ import logic.CollidableEntity;
 import sharedObject.RenderableHolder;
 
 public class GolfBall extends CollidableEntity {
-	private final double maxSpeed = 10;
+	public final double maxSpeed = 10;
 	private int powerPercent;
 	private double speed ,angle;
 	private final double speedDecayRate = 0.25 ;

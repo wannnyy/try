@@ -9,6 +9,7 @@ import main.Main;
 import sharedObject.RenderableHolder;
 
 public class GameScreen {
+	private int shotCounter;
 	private GameLogic gameLogic;
 	private GolfCourse golfCourse;
 	private RootPane rootPane;
@@ -18,6 +19,7 @@ public class GameScreen {
 	private AnimationTimer animation;
 
 	public GameScreen(Main main, Stage stage) {
+		shotCounter = 0 ;
 		this.main = main;
 		this.stage = stage;
 		golfCourse = new GolfCourse();
@@ -38,6 +40,14 @@ public class GameScreen {
 	public void start() {
 		animation.start();
 		stage.setScene(gameScene);
+	}
+
+	public int getShotCounter() {
+		return shotCounter;
+	}
+
+	public void setShotCounter(int shotCounter) {
+		this.shotCounter = shotCounter;
 	}
 
 	public void reset() {
