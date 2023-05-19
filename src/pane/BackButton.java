@@ -6,6 +6,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import logic.GameLogic;
 import main.Main;
+import sharedObject.RenderableHolder;
 
 public class BackButton extends StackPane {
 	public BackButton(Main main) {
@@ -15,6 +16,7 @@ public class BackButton extends StackPane {
 		this.setOnMouseClicked(event -> {
 			main.getStage().setScene(main.getWelcomePageScene());
 			main.getGameScreen().reset();
+			RenderableHolder.clickSound.play();
 		});
 		this.getChildren().addAll(c1, t1);
 	}

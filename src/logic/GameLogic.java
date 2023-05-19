@@ -19,18 +19,14 @@ import pane.GameEndScreen;
 import sharedObject.RenderableHolder;
 
 public class GameLogic {
-//	private static GameLogic instance = null;
 	private List<Entity> gameObjectContainer;
 	private int shotCounter;
 	private int maxShot;
 	private boolean isWin;
 	private List<Obstacle> obstacle;
 	private GolfBall golfBall;
-	private Tree tree, tree1;
 	private Hole hole;
-	private Rock rock;
 	private Main main;
-	private Wall wall1;
 	private final Map map = new Map();
 
 	public GameLogic(Main main) {
@@ -58,42 +54,39 @@ public class GameLogic {
 		if (selectedMap.equals("Map 1")) {
 			ArrayList<Entity> map1 = map.buildMap1();
 			golfBall = new GolfBall(600, 400, this);
-			hole = new Hole(100, 200);
+			hole = new Hole(50, 50);
 			addNewObject(golfBall);
 			addNewObject(hole);
-			this.maxShot = 5;
+			this.maxShot = 6;
 			for (Entity e : map1) {
 				addNewObject(e);
 			}
 
 		} else if (selectedMap.equals("Map 2")) {
+			ArrayList<Entity> map2 = map.buildMap2();
 			golfBall = new GolfBall(600, 400, this);
-			tree = new Tree(200, 400);
-			tree1 = new Tree(400, 400);
 			hole = new Hole(100, 200);
-			wall1 = new Wall(350, 250, 20, 70);
-			rock = new Rock(300, 300);
 			addNewObject(golfBall);
-			addNewObject(rock);
-			addNewObject(tree);
-			addNewObject(tree1);
 			addNewObject(hole);
 			this.maxShot = 8;
-
+			for(Entity e : map2) {
+				addNewObject(e);
+			}
 		} else {
 			golfBall = new GolfBall(600, 400, this);
-			tree = new Tree(200, 400);
-			tree1 = new Tree(400, 400);
 			hole = new Hole(100, 200);
-			wall1 = new Wall(350, 250, 20, 70);
-			rock = new Rock(300, 300);
 			addNewObject(golfBall);
-			addNewObject(rock);
-			addNewObject(tree);
 			addNewObject(hole);
-			addNewObject(wall1);
 			this.maxShot = 4;
 		}
+	}
+
+	public boolean isWin() {
+		return isWin;
+	}
+
+	public void setWin(boolean isWin) {
+		this.isWin = isWin;
 	}
 
 	public List<Entity> getGameObjectContainer() {
@@ -134,7 +127,6 @@ public class GameLogic {
 		checkWinning();
 		for (Obstacle e : obstacle) {
 			if (golfBall.collideWith(e) && !e.isDestroyed()) {
-				System.out.println("hit");
 				e.onCollision(golfBall);
 			}
 		}

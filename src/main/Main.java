@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pane.GameScreen;
 import pane.WelcomePage;
+import sharedObject.RenderableHolder;
 
 public class Main extends Application {
 	private String selectedMap;
@@ -23,10 +24,12 @@ public class Main extends Application {
 		welcomePageScene = new Scene(welcomePage, 800, 640);
 		welcomePageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 		gameScreen = new GameScreen(this, stage);
+		
 		stage.setScene(welcomePageScene);
 		stage.setTitle("MiniGolf");
 		stage.setResizable(false);
 		stage.show();
+		RenderableHolder.playBackgroundMusic();
 	}
 
 	public GameScreen getGameScreen() {

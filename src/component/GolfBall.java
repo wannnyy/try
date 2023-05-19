@@ -60,7 +60,6 @@ public class GolfBall extends CollidableEntity {
 			setSpeed(Math.min(maxSpeed, calculatePower()));
 			InputUtility.mouseRelease = false;
 			angle = calculateAngle();
-			System.out.println(angle);
 			RenderableHolder.hitSound.play();
 			setShotCount(shotCount + 1);
 		}
@@ -83,7 +82,6 @@ public class GolfBall extends CollidableEntity {
 	public double calculateAngle() {
 		double dx = this.x - InputUtility.mousePosX;
 		double dy = -this.y + InputUtility.mousePosY;
-		System.out.println("" + dx + " " + dy + " " + Math.atan2(dy, dx));
 		return Math.atan2(dy, dx);
 	}
 
@@ -148,6 +146,14 @@ public class GolfBall extends CollidableEntity {
 
 	public void hitObstacle() {
 		this.angle += Math.PI;
+	}
+
+	public GameLogic getGameLogic() {
+		return gameLogic;
+	}
+
+	public void setGameLogic(GameLogic gameLogic) {
+		this.gameLogic = gameLogic;
 	}
 
 	public void drawArrow(GraphicsContext gc) {

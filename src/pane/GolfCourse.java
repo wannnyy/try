@@ -19,9 +19,7 @@ public class GolfCourse extends Canvas {
 
 
 	public void addListerner() {
-		System.out.println("detect");
 		this.setOnKeyPressed((KeyEvent event) -> {
-			System.out.println("asdawdad");
 			InputUtility.setKeyPressed(event.getCode(), true);
 		});
 
@@ -65,12 +63,10 @@ public class GolfCourse extends Canvas {
 		this.setOnMouseDragged((MouseEvent event) -> {
 			if (InputUtility.mouseOnScreen) {
 				InputUtility.mouseX = event.getX();
-//				System.out.println("dragging");
 				InputUtility.mouseY = event.getY();
 				InputUtility.mousePosX = event.getX();
 				InputUtility.mousePosY = event.getY();
 				InputUtility.isDrag = true;
-//				System.out.println(InputUtility.isDrag);
 			}
 		});
 	}

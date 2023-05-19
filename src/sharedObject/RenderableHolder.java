@@ -7,6 +7,8 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
@@ -19,11 +21,17 @@ public class RenderableHolder {
 	public static Image backgroundImage;
 	public static Image golfBall;
 	public static Image rockSprite;
+	public static Image waterSprite;
 	public static AudioClip hitSound;
 	public static AudioClip clickSound;
 	public static AudioClip treeHit;
 	public static AudioClip rockHit;
 	public static AudioClip puttSound ;
+	public static AudioClip failSound ;
+	public static AudioClip successSound ;
+	public static AudioClip waterBloopSound ;
+	public static Media backgroundMusic;
+
 
 	static {
 		loadResource();
@@ -50,6 +58,7 @@ public class RenderableHolder {
 		mapSprite = new Image(ClassLoader.getSystemResource("Grasses.png").toString());
 		treeSprite = new Image(ClassLoader.getSystemResource("tree.png").toString());
 		rockSprite = new Image(ClassLoader.getSystemResource("rock.png").toString());
+		waterSprite = new Image(ClassLoader.getSystemResource("water.png").toString());
 		golfBall = new Image(ClassLoader.getSystemResource("golfBall.png").toString());
 		hitSound = new AudioClip(ClassLoader.getSystemResource("hitsound.mp3").toString());
 		treeHit = new AudioClip(ClassLoader.getSystemResource("treehit.mp3").toString());
@@ -57,10 +66,23 @@ public class RenderableHolder {
 		rockHit = new AudioClip(ClassLoader.getSystemResource("rockhit.mp4").toString());
 		backgroundImage = new Image(ClassLoader.getSystemResource("bgi2.jpg").toString());
 		clickSound = new AudioClip(ClassLoader.getSystemResource("clicksound.mp3").toString());
+		failSound = new AudioClip(ClassLoader.getSystemResource("failsound.mp3").toString());
+		successSound = new AudioClip(ClassLoader.getSystemResource("successsound.mp3").toString());
+		waterBloopSound = new AudioClip(ClassLoader.getSystemResource("waterbloop.mp3").toString());
+		backgroundMusic = new Media(ClassLoader.getSystemResource("backgroundMusic.mp3").toString());
+	}
+	
+	public static void playBackgroundMusic()
+	{
+		MediaPlayer mediaPlayer = new MediaPlayer(backgroundMusic);
+		mediaPlayer.setVolume(0.05);
+		mediaPlayer.play();
+		mediaPlayer.setOnEndOfMedia(()->{
+			playBackgroundMusic();
+		});
 	}
 
 	public void add(IRenderable entity) {
-		System.out.println("add");
 		entities.add(entity);
 		Collections.sort(entities, comparator);
 	}

@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import main.Main;
+import sharedObject.RenderableHolder;
 
 public class GameEndScreen extends VBox {
 	private Main main;
@@ -33,6 +34,7 @@ public class GameEndScreen extends VBox {
 		Button reset = new Button();
 		reset.setText("Play Again");
 		reset.setOnAction(event -> {
+			RenderableHolder.clickSound.play();
 			main.getGameScreen().reset();
 			main.getGameScreen().start();
 		});
@@ -43,6 +45,7 @@ public class GameEndScreen extends VBox {
 		home.setText("Home");
 		home.setOnAction(event -> {
 			main.getStage().setScene(main.getWelcomePageScene());
+			RenderableHolder.clickSound.play();
 		});
 		home.getStyleClass().add("ending-home");
 
@@ -56,11 +59,13 @@ public class GameEndScreen extends VBox {
 
 	public void losingScene() {
 		titleLabel.setText("YOU LOSE!");
+		RenderableHolder.failSound.play();
 		this.getChildren().addAll(titleLabel, buttonSection);
 	}
 
 	public void winningScene() {
 		titleLabel.setText("YOU WIN!");
+		RenderableHolder.successSound.play();
 		this.getChildren().addAll(titleLabel, buttonSection);
 	}
 

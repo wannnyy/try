@@ -12,6 +12,7 @@ public class Hole extends Obstacle {
 
 	public Hole(double centerX, double centerY) {
 		circle = new Circle(centerX, centerY, radius, Color.BLACK);
+		this.z = -200;
 	}
 
 	public Circle getCircle() {
